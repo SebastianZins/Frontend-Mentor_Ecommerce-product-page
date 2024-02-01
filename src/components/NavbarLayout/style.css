@@ -1,0 +1,30 @@
+header {
+  background: var(--neutral-color-white);
+  height: 68px;
+  display: flex;
+  padding: 0px 24px;
+  justify-content: space-between;
+}
+header .left-align,
+header .right-align {
+  display: flex;
+  align-items: center;
+}
+header .menu {
+  height: 15px;
+  width: 15px;
+}
+header .avatar,
+header .cart {
+  height: 20px;
+  width: 20px;
+}
+header .logo {
+  height: 20px;
+}
+header .cart {
+  margin-right: 25px;
+}
+header .logo {
+  margin-left: 15px;
+}/*# sourceMappingURL=style.css.map */

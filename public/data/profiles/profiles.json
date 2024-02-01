@@ -1,0 +1,10 @@
+[
+    {
+        "id": "0001",
+        "name": "John Doe",
+        "avatar": {
+            "file_name": "image-avatar",
+            "file_extencion": "png"
+        }
+    }
+]
