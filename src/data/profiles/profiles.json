@@ -4,7 +4,7 @@
         "name": "John Doe",
         "avatar": {
             "file_name": "image-avatar",
-            "file_extension": "png"
+            "file_extencion": "png"
         }
     }
 ]

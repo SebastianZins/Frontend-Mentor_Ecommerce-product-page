@@ -11,37 +11,37 @@
         "images": [
             {
                 "file_name": "image-product-1",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             },
             {
                 "file_name": "image-product-2",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             },
             {
                 "file_name": "image-product-3",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             },
             {
                 "file_name": "image-product-4",
-                "file_extension": "jpg"
+                "file_xtencion": "jpg"
             }
         ],
         "images_thumbnail": [
             {
                 "file_name": "image-product-1-thumbnail",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             },
             {
                 "file_name": "image-product-2-thumbnail",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             },
             {
                 "file_name": "image-product-3-thumbnail",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             },
             {
                 "file_name": "image-product-4-thumbnail",
-                "file_extension": "jpg"
+                "file_extencion": "jpg"
             }
         ]
     }

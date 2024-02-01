@@ -1,0 +1,38 @@
+.product-images {
+  height: 300px;
+  overflow: hidden;
+}
+.product-images figure {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  top: -100%;
+}
+.product-images figure .image {
+  width: 100%;
+}
+.product-images .arrow-button-group {
+  z-index: 2;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+.product-images .arrow-button-group .arrow-button {
+  position: relative;
+  background: var(--neutral-color-white);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.product-images .arrow-button-group .arrow-button img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 14px;
+}/*# sourceMappingURL=style.css.map */
