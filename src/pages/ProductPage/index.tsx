@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import PageLayout from 'components/PageLayout';
-
-import { ProductType } from 'utils/types/product-type';
-import { ProfileType } from 'utils/types/profile-type';
-
-import './style.css';
 import ImageViewerComponent from './ImageViewerComponent';
 import ProductInfoComponent from './ProductInfoComponent';
 import ProductInteractionComponent from './ProductInteractionComponent';
+import { RootState } from 'store/store';
 
-const productsEndpoint = 'data/products/products.json';
-const profilesEndpoint = 'data/products/products.json';
+import './style.css';
+import { useEffect, useState } from 'react';
+import { ProductType } from 'utils/types/product-type';
 
 function ProductPage({
     profileID,
@@ -19,52 +17,66 @@ function ProductPage({
     profileID: string;
     productID: string;
 }) {
-    // define state variables
-    const [productsData, setProductsData] = useState([]);
-    const [profilesData, setProfilesData] = useState([]);
-    const [profile, setProfile] = useState<ProfileType>();
+    // fetch data for (pseudo) selected product and profile
+
     const [selectedProduct, setSelectedProduct] = useState<ProductType>();
+    const [loading, setLoading] = useState(true);
 
-    // load data for profiles and products
     useEffect(() => {
-        (async () => {
-            const data = await fetch(productsEndpoint).then((res) =>
-                res.json()
-            );
+        const fetchData = async () => {
+            try {
+                setLoading(true);
 
-            setProductsData(data);
-        })();
+                await timeout(1000);
+                const response = await fetch(
+                    `${process.env.PUBLIC_URL}/data/products/products.json`
+                );
+                const resData = (await response.json()) as ProductType[];
+
+                if (resData.length === 0) {
+                    throw new Error('List of products is Empty!');
+                }
+
+                const foundProduct = resData.find((i) => i.id === productID);
+
+                if (foundProduct === undefined) {
+                    throw new Error('Product not found.');
+                }
+
+                setSelectedProduct(foundProduct);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
     }, []);
-    useEffect(() => {
-        (async () => {
-            const data = await fetch(profilesEndpoint).then((res) =>
-                res.json()
-            );
-
-            setProfilesData(data);
-        })();
-    }, []);
-
-    // load data for used profile and selected product
-    useEffect(() => {
-        setProfile(
-            productsData.find((item: ProfileType) => item.id === profileID)
-        );
-    }, [profileID, productsData]);
-
-    useEffect(() => {
-        setSelectedProduct(
-            profilesData.find((item: ProductType) => item.id === productID)
-        );
-    }, [productID, profilesData]);
 
     return (
         <PageLayout
             content={
                 <div>
-                    <ImageViewerComponent selectedProduct={selectedProduct} />
-                    <ProductInfoComponent selectedProduct={selectedProduct} />
-                    <ProductInteractionComponent />
+                    <div className={'main' + (!loading ? 'is-loading' : '')}>
+                        <ImageViewerComponent
+                            selectedProduct={selectedProduct}
+                        />
+                        <ProductInfoComponent
+                            selectedProduct={selectedProduct}
+                        />
+                        <ProductInteractionComponent />
+                    </div>
+                    <div
+                        className={
+                            'loading-screen' + (loading ? '' : ' hidden')
+                        }
+                    >
+                        <div className={'loading-component'}>
+                            <div className='spinner'></div>
+                            <div className='spinner inner'></div>
+                            <div className='stick'></div>
+                            <div className='stick lower'></div>
+                        </div>
+                    </div>
                 </div>
             }
         />
@@ -72,3 +84,7 @@ function ProductPage({
 }
 
 export default ProductPage;
+
+function timeout(delay: number) {
+    return new Promise((res) => setTimeout(res, delay));
+}

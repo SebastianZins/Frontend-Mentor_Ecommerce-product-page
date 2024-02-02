@@ -7,7 +7,7 @@ export interface ProductType {
     description: string;
     price_Dollar: number;
     is_reduced: boolean;
-    discound_total: number;
+    discount_total: number;
     discount_percentage: number;
     images: ImageType[];
     images_thumbnail: ImageType[];

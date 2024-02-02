@@ -1,1 +1,79 @@
-/*# sourceMappingURL=style.css.map */
+.is-loading {
+  opacity: 0;
+}
+
+.loading-screen {
+  position: absolute;
+  top: 68px;
+  height: calc(100vh - 68px);
+  width: 100vw;
+  background: var(--neutral-color-white);
+  opacity: 100%;
+  transition: opacity 1s;
+  z-index: 10;
+  pointer-events: none;
+}
+.loading-screen.hidden {
+  opacity: 0%;
+}
+.loading-screen .loading-component {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+}
+.loading-screen .loading-component .spinner {
+  top: -10px;
+  left: -10px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border-right: 10px solid rgba(0, 0, 0, 0);
+  border-left: 10px solid var(--primary-color-orange);
+  border-top: 10px solid var(--primary-color-orange);
+  border-bottom: 10px solid var(--primary-color-orange);
+  animation: spinner 2s ease-in-out infinite;
+}
+.loading-screen .loading-component .spinner.inner {
+  top: 7.5px;
+  left: 7.5px;
+  height: 75%;
+  width: 75%;
+  border-width: 5px;
+  animation: spinner 2s ease-in-out infinite reverse;
+}
+.loading-screen .loading-component .stick {
+  top: calc(50% - 4px);
+  left: calc(100% - 70px);
+  transform: translate(5px, -50%);
+  position: absolute;
+  height: 10px;
+  width: 70px;
+  background-color: var(--primary-color-orange);
+  border-radius: 20px;
+  animation: stick 1s ease-in-out infinite alternate;
+}
+.loading-screen .loading-component .stick.lower {
+  top: calc(50% + 10px);
+  height: 5px;
+}
+
+@keyframes stick {
+  0% {
+    width: 70px;
+  }
+  100% {
+    width: 0px;
+  }
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=style.css.map */

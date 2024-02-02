@@ -1,30 +1,27 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import icon_plus from 'images/icon-plus.svg';
-import icon_minus from 'images/icon-minus.svg';
-import icon_cart from 'images/icon-cart.svg';
+import { RootState } from 'store/store';
+import { decrement, increment } from 'store/counter/counter-slice';
 
 import './style.css';
 
+import icon_plus from 'assets/icon-plus.svg';
+import icon_minus from 'assets/icon-minus.svg';
+import icon_cart from 'assets/icon-cart.svg';
+
 function ProductInteractionComponent() {
     // define states
-    const [numSelected, setNumSelected] = useState(0);
-    const [hideSubIcon, setHideSubIcon] = useState(true);
-    //const [hideAddIcon, setHideAddIcon] = useState(false);
+    const count = useSelector((state: RootState) => state.counter.value);
+    const dispatch = useDispatch();
 
     // define handlers
     const handleIncreaseNumSelected = () => {
-        setNumSelected((ns) => ns + 1);
-        setHideSubIcon(false);
+        //setNumSelected((ns) => ns + 1);
+        dispatch(increment());
     };
     const handleDecreaseNumSelected = () => {
-        if (numSelected >= 1) {
-            if (numSelected === 1) {
-                setHideSubIcon(true);
-            }
-            setNumSelected((ns) => ns - 1);
-        } else {
-            setHideSubIcon(true);
+        if (count >= 1) {
+            dispatch(decrement());
         }
     };
 
@@ -35,11 +32,11 @@ function ProductInteractionComponent() {
                     <img
                         src={icon_minus}
                         alt='minus icon'
-                        className={'sub' + (hideSubIcon ? ' hide' : '')}
+                        className={'sub' + (count === 0 ? ' hide' : '')}
                     />
                 </div>
 
-                <div>{numSelected}</div>
+                <div>{count}</div>
                 <div onClick={handleIncreaseNumSelected}>
                     <img src={icon_plus} alt='plus icon' className='add' />
                 </div>

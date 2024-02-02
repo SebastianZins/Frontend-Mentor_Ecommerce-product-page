@@ -1,9 +1,15 @@
 import './style.css';
 
-import icon_next from 'images/icon-next.svg';
-import icon_prev from 'images/icon-previous.svg';
-import { useState } from 'react';
+import icon_next from 'assets/icon-next.svg';
+import icon_prev from 'assets/icon-previous.svg';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProductImage } from 'services/get-product-image';
+import {
+    decrement,
+    increment,
+    set,
+} from 'store/imageSelected/image-selected-slice';
+import { RootState } from 'store/store';
 import { ProductType } from 'utils/types/product-type';
 
 function ImageViewerComponent({
@@ -11,15 +17,19 @@ function ImageViewerComponent({
 }: {
     selectedProduct: ProductType | undefined;
 }) {
-    // define state variables
-    const [imgIndexVisible, setImgIndexVisible] = useState(0);
+    // get state variable
+    const imageIndex = useSelector(
+        (state: RootState) => state.imageSelected.index
+    );
+    const dispatch = useDispatch();
+
     // handler function
     const handleShowNextImage = () => {
         if (selectedProduct !== undefined) {
-            if (imgIndexVisible + 1 <= selectedProduct?.images.length - 1) {
-                setImgIndexVisible(imgIndexVisible + 1);
+            if (imageIndex + 1 <= selectedProduct?.images.length - 1) {
+                dispatch(increment());
             } else {
-                setImgIndexVisible(0);
+                dispatch(set(0));
             }
         } else {
             return;
@@ -27,10 +37,10 @@ function ImageViewerComponent({
     };
     const handleShowPrevImage = () => {
         if (selectedProduct !== undefined) {
-            if (imgIndexVisible - 1 >= 0) {
-                setImgIndexVisible(imgIndexVisible - 1);
+            if (imageIndex - 1 >= 0) {
+                dispatch(decrement());
             } else {
-                setImgIndexVisible(selectedProduct.images.length - 1);
+                dispatch(set(selectedProduct.images.length - 1));
             }
         } else {
             return;
@@ -48,7 +58,7 @@ function ImageViewerComponent({
                         alt={'Product image | ' + selectedProduct.name}
                         key={img.file_name}
                         className={
-                            'image ' + (i === imgIndexVisible ? '' : 'hidden')
+                            'image ' + (i === imageIndex ? '' : 'hidden')
                         }
                     />
                 );

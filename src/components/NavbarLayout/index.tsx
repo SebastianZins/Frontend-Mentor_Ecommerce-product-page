@@ -1,9 +1,9 @@
 import './style.css';
 
-import menuIcon from 'images/icon-menu.svg';
-import cartIcon from 'images/icon-cart.svg';
-import logoImage from 'images/logo.svg';
-import avatarImage from 'images/image-avatar.png';
+import menuIcon from 'assets/icon-menu.svg';
+import cartIcon from 'assets/icon-cart.svg';
+import logoImage from 'assets/logo.svg';
+import avatarImage from 'assets/image-avatar.png';
 
 function NavbarLayout() {
     return (

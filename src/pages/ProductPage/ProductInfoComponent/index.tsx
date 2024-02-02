@@ -20,8 +20,8 @@ function ProductInfoComponent({
             price *= selectedProduct.discount_percentage / 100;
             discount += selectedProduct.discount_percentage + '%';
         } else {
-            price -= selectedProduct.discound_total;
-            discount += '- $' + selectedProduct.discound_total;
+            price -= selectedProduct.discount_total;
+            discount += '- $' + selectedProduct.discount_total;
         }
     }
 
