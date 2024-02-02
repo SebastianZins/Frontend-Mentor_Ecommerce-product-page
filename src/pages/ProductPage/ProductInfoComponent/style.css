@@ -1,0 +1,43 @@
+article {
+  padding: 0px 26px;
+}
+article .company {
+  font-weight: 700;
+  color: var(--primary-color-orange);
+}
+article h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+article .description {
+  font-size: 15px;
+  color: var(--neutral-color-dark-grayish-blue);
+}
+article .price {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+article .price p {
+  margin: 0;
+}
+article .price .price-is {
+  display: flex;
+  align-items: center;
+}
+article .price .price-is .amount {
+  font-size: 28px;
+}
+article .price .price-is .discount {
+  margin-left: 15px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  color: var(--primary-color-orange);
+  background: var(--primary-color-pale-orange);
+}
+article .price .price-was {
+  color: var(--neutral-color-grayish-blue);
+}/*# sourceMappingURL=style.css.map */

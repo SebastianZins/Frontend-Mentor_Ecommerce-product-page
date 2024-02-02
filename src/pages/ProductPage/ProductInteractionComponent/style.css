@@ -1,0 +1,54 @@
+.interaction {
+  padding: 20px 26px;
+  font-weight: 700;
+}
+.interaction .amount-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  height: 60px;
+  background-color: var(--neutral-color-light-grayish-blue);
+  border-radius: 7px;
+}
+.interaction .amount-picker .add {
+  height: 13px;
+}
+.interaction .amount-picker .add,
+.interaction .amount-picker .sub {
+  width: 13px;
+  color: var(--primary-color-orange);
+  cursor: pointer;
+}
+.interaction .amount-picker .add:hover,
+.interaction .amount-picker .sub:hover {
+  filter: opacity(70%);
+}
+.interaction .amount-picker .add.hide,
+.interaction .amount-picker .sub.hide {
+  visibility: hidden;
+}
+.interaction .submit-btn {
+  margin-top: 15px;
+  height: 60px;
+  background: var(--primary-color-orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  color: var(--neutral-color-white);
+  font-size: 16px;
+}
+.interaction .submit-btn:hover {
+  cursor: pointer;
+  filter: opacity(70%);
+}
+.interaction .submit-btn .btn-content {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+.interaction .submit-btn .btn-content img {
+  height: 18px;
+  filter: invert(100%);
+}/*# sourceMappingURL=style.css.map */
