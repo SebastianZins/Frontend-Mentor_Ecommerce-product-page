@@ -12,6 +12,10 @@
 }
 .product-images figure .image {
   width: 100%;
+  position: absolute;
+}
+.product-images figure .image.hidden {
+  visibility: hidden;
 }
 .product-images .arrow-button-group {
   z-index: 2;
@@ -28,6 +32,27 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+.product-images .arrow-button-group .arrow-button.disabled {
+  background: var(--neutral-color-light-grayish-blue);
+}
+.product-images .arrow-button-group .arrow-button.disabled img {
+  filter: invert(76%) sepia(59%) saturate(0%) hue-rotate(223deg) brightness(90%) contrast(85%);
+}
+.product-images .arrow-button-group .arrow-button.disabled:hover {
+  cursor: default;
+}
+.product-images .arrow-button-group .arrow-button.disabled:hover img {
+  filter: invert(76%) sepia(59%) saturate(0%) hue-rotate(223deg) brightness(90%) contrast(85%);
+}
+.product-images .arrow-button-group .arrow-button:hover {
+  cursor: pointer;
+}
+.product-images .arrow-button-group .arrow-button:hover img {
+  filter: invert(54%) sepia(45%) saturate(1375%) hue-rotate(346deg) brightness(99%) contrast(104%);
 }
 .product-images .arrow-button-group .arrow-button img {
   position: absolute;

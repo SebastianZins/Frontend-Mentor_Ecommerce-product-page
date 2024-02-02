@@ -12,6 +12,11 @@
 
         .image {
             width: 100%;
+            position: absolute;
+
+            &.hidden {
+                visibility: hidden;
+            }
         }
     }
 
@@ -30,6 +35,33 @@
             height: 40px;
             width: 40px;
             border-radius: 50%;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+
+            &.disabled {
+                background: var(--neutral-color-light-grayish-blue);
+                img {
+                    filter: invert(76%) sepia(59%) saturate(0%)
+                        hue-rotate(223deg) brightness(90%) contrast(85%);
+                }
+
+                &:hover {
+                    cursor: default;
+                    img {
+                        filter: invert(76%) sepia(59%) saturate(0%)
+                            hue-rotate(223deg) brightness(90%) contrast(85%);
+                    }
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                img {
+                    filter: invert(54%) sepia(45%) saturate(1375%)
+                        hue-rotate(346deg) brightness(99%) contrast(104%);
+                }
+            }
 
             img {
                 position: absolute;
